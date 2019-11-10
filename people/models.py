@@ -21,6 +21,9 @@ class Phone(models.Model):
     number = models.IntegerField()
     person = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True)
 
+    def __str__(self):
+        return self.number
+
 
 class FacultyType(models.Model):
     type = models.CharField(max_length=100, unique=True)

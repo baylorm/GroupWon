@@ -8,6 +8,9 @@ class Organization(models.Model):
     num_members = models.IntegerField()
     notes = models.TextField()
 
+    def __str__(self):
+        return self.name
+
 
 class Project(models.Model):
     name = models.CharField(max_length=150)
@@ -17,6 +20,9 @@ class Project(models.Model):
     community_partner = models.ForeignKey(Organization, on_delete=models.SET_NULL, blank=True, null=True, related_name='community')
     lafayette_organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, blank=True, null=True, related_name='lafayette')
 
+    def __str__(self):
+        return self.name
+
 
 class Event(models.Model):
     name = models.CharField(max_length=150)
@@ -24,3 +30,6 @@ class Event(models.Model):
     pulse_date = models.DateField()
     num_volunteers = models.IntegerField()
     notes = models.TextField()
+
+    def __str__(self):
+        return self.name
