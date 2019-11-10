@@ -9,7 +9,7 @@ class Department(models.Model):
 class Person(models.Model):
     first = models.CharField(max_length=20)
     last = models.CharField(max_length=30)
-    email = models.emailField()
+    email = models.EmailField()
     role = models.CharField(max_length=100)
 
 
