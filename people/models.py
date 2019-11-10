@@ -15,3 +15,7 @@ class Person(models.Model):
 
 class Phone(models.Model):
     number = models.IntegerField()
+
+
+class FacultyType(models.Model):
+    type = models.CharField(max_length=100)
