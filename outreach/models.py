@@ -13,3 +13,11 @@ class Organization(models.Model):
     type = models.CharField(max_length=150)
     num_members = models.IntegerField()
     notes = models.TextField()
+
+
+class Event(models.Model):
+    name = models.CharField(max_length=150)
+    date = models.DateField()
+    pulse_date = models.DateField()
+    num_volunteers = models.IntegerField()
+    notes = models.TextField()
