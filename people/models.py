@@ -12,7 +12,7 @@ class Department(models.Model):
 class Person(models.Model):
     first = models.CharField(max_length=20)
     last = models.CharField(max_length=30)
-    email = models.EmailField()
+    email = models.EmailField(null=True, blank=True)
     role = models.CharField(max_length=100, choices=(('Student', 'Student'), ('Faculty', 'Faculty'),
                                                      ('Community Member', 'Community Member')), )
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
@@ -31,6 +31,7 @@ class Phone(models.Model):
 
 class FacultyType(models.Model):
     type = models.CharField(max_length=100, unique=True)
+    person = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         return self.type

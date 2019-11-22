@@ -8,7 +8,7 @@ from people.models import Person
 class Organization(models.Model):
     name = models.CharField(max_length=150)
     type = models.CharField(max_length=150)
-    num_members = models.IntegerField(blank=True, null=True)
+    num_members = models.IntegerField(blank=True, null=True, verbose_name='Number of Members')
     notes = models.TextField(blank=True, null=True)
     contact = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True)
 
