@@ -53,10 +53,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'GroupWon.urls'
 
-TEMPLATES_DIRS = [
-    'templates/admin/base.html'
-]
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
