@@ -11,9 +11,9 @@ class PhoneInLine(admin.StackedInline):
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('first', 'last', 'email', 'role')
-    fields = ('first', 'last', 'email', 'role',)
-    search_fields = ('first', 'last', 'email')
+    list_display = ('first', 'last', 'email', 'role', 'department')
+    fields = ('first', 'last', 'email', 'role', 'department')
+    search_fields = ('first', 'last', 'email', 'role', 'department')
     inlines = [PhoneInLine]
 
 

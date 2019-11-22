@@ -5,6 +5,9 @@ from django.db import models
 class Department(models.Model):
     name = models.CharField(max_length=150)
 
+    def __str__(self):
+        return str(self.name)
+
 
 class Person(models.Model):
     first = models.CharField(max_length=20)
@@ -12,6 +15,7 @@ class Person(models.Model):
     email = models.EmailField()
     role = models.CharField(max_length=100, choices=(('Student', 'Student'), ('Faculty', 'Faculty'),
                                                      ('Community Member', 'Community Member')), )
+    department = models.ForeignKey(Department, on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return self.first + " " + self.last
@@ -22,7 +26,7 @@ class Phone(models.Model):
     person = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
-        return self.number
+        return str(self.number)
 
 
 class FacultyType(models.Model):
