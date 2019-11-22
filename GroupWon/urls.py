@@ -17,9 +17,7 @@ from django.contrib import admin
 from django.urls import path, reverse_lazy
 from django.views.generic import RedirectView
 
-from GroupWon.admin import admin_site
-
 urlpatterns = [
-    path('admin/', admin_site.urls, name="admin"),
+    path('admin/', admin.site.urls, name="admin"),
     path('', RedirectView.as_view(url=reverse_lazy('admin:index'))),
 ]
