@@ -8,8 +8,8 @@ from people.models import Person
 class Organization(models.Model):
     name = models.CharField(max_length=150)
     type = models.CharField(max_length=150)
-    num_members = models.IntegerField()
-    notes = models.TextField()
+    num_members = models.IntegerField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
     contact = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
@@ -20,7 +20,7 @@ class Project(models.Model):
     name = models.CharField(max_length=150)
     status = models.CharField(max_length=150, choices=(('Upcoming', 'Upcoming'), ('Ongoing', 'Ongoing'),
                                                        ('Completed', 'Completed')))
-    notes = models.TextField()
+    notes = models.TextField(blank=True, null=True)
     community_partner = models.ForeignKey(Organization, on_delete=models.SET_NULL, blank=True, null=True,
                                           related_name='community')
     lafayette_organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, blank=True, null=True,
@@ -36,10 +36,10 @@ class Project(models.Model):
 
 class Event(models.Model):
     name = models.CharField(max_length=150)
-    date = models.DateTimeField()
-    pulse_date = models.DateField()
-    num_volunteers = models.IntegerField()
-    notes = models.TextField()
+    date = models.DateTimeField(blank=True, null=True)
+    pulse_date = models.DateField(blank=True, null=True)
+    num_volunteers = models.IntegerField(blank=True, null=True)
+    notes = models.TextField(blank=True, null=True)
     coordinator = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True,
                                     related_name='coordinator')
     contact = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True,
