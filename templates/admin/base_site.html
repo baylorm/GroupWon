@@ -17,9 +17,20 @@
         #header {
             background-color: #910029;
             color: white;
+            border-bottom: 4px solid #65001C;
         }
 
-        div.selector-chosen h2{
+        #branding {
+            font-size: 300%;
+        }
+
+        div#recent-actions-module.module h2{
+            background-color: #910029;
+            color: white;
+            border-bottom: 4px solid #65001C;
+        }
+
+        div.selector-chosen h2 {
             background-color: #65001C;
         }
 
@@ -83,12 +94,10 @@
 {% endblock %}
 
 {% block branding %}
-
-
-    <h1 id="site-name"><span style="color:white">
+    <h25 id="site-name"><span style="color:white">
     <img src="//upload.wikimedia.org/wikipedia/en/thumb/3/31/Seal_of_Lafayette_College.png/180px-Seal_of_Lafayette_College.png"
-         alt="logo" class="logo" height="50" width="50">
-    Landis Center Admin Panel</span></h1>
+         alt="logo" class="logo" height="50" width="50" align="top">
+    Landis Center Admin Panel</span></h25>
 {% endblock %}
 
 {% block nav-global %}
