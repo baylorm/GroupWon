@@ -33,6 +33,7 @@ class PersonAdmin(admin.ModelAdmin):
     search_fields = ('first', 'last', 'email', 'role', 'department__name', 'faculty_type__type')
     inlines = [PhoneInLine]
     form = PersonForm
+    ordering = ('last', 'first',)
 
     def phone_numbers(self, obj):
         number = ""
@@ -51,12 +52,14 @@ class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('name',)
     fields = ('name',)
     search_fields = ('name',)
+    ordering = ('name',)
 
 
 class FacultyAdmin(admin.ModelAdmin):
     list_display = ('type',)
     fields = ('type',)
     search_fields = ('type',)
+    ordering = ('type',)
 
 
 admin.site.register(FacultyType, FacultyAdmin)
