@@ -11,7 +11,7 @@ def mark_completed(modeladmin, request, queryset):
 # Register your models here.
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'contact', 'num_members')
-    list_filter = ('type')
+    list_filter = ('type',)
     fields = ('name', 'type', 'contact', 'num_members', 'notes')
     search_fields = ('name', 'type', 'contact', 'num_members', 'notes')
 
