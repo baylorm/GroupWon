@@ -30,7 +30,7 @@ class PersonForm(forms.ModelForm):
 class PersonAdmin(admin.ModelAdmin):
     list_display = ('last', 'first', 'email', 'role', 'department', 'faculty_type', 'phone_numbers')
     list_filter = ('role', 'department', 'faculty_type')
-    search_fields = ('first', 'last', 'email', 'role', 'department', 'faculty_type')
+    search_fields = ('first', 'last', 'email', 'role', 'department__name', 'faculty_type__type')
     inlines = [PhoneInLine]
     form = PersonForm
 

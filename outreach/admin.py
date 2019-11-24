@@ -10,7 +10,7 @@ def mark_completed(modeladmin, request, queryset):
 
 # Register your models here.
 class OrganizationAdmin(admin.ModelAdmin):
-    list_display = ('name', 'type', 'contact', 'num_members')
+    list_display = ('name', 'type', 'contact', 'num_members', 'notes')
     list_filter = ('type',)
     fields = ('name', 'type', 'contact', 'num_members', 'notes')
     search_fields = ('name', 'type', 'contact', 'num_members', 'notes')
@@ -18,7 +18,7 @@ class OrganizationAdmin(admin.ModelAdmin):
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'status', 'student_partner', 'faculty_partner', 'lafayette_organization',
-                    'community_partner')
+                    'community_partner', 'notes')
     list_filter = ('status','student_partner', 'faculty_partner', 'lafayette_organization', 'community_partner')
     fields = ('name', 'status', 'student_partner', 'faculty_partner', 'lafayette_organization', 'community_partner',
               'notes')
@@ -32,6 +32,7 @@ class EventAdmin(admin.ModelAdmin):
     list_filter = ('coordinator', 'organization', 'date', 'pulse_date')
     fields = ('name', 'coordinator', 'contact', 'organization', 'date', 'pulse_date', 'num_volunteers', 'notes')
     search_fields = ('name', 'coordinator', 'contact', 'organization', 'date', 'pulse_date', 'num_volunteers', 'notes')
+    ordering = ('date',)
 
 
 admin.site.register(Organization, OrganizationAdmin)
