@@ -13,7 +13,7 @@ class OrganizationAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'contact', 'num_members', 'notes')
     list_filter = ('type',)
     fields = ('name', 'type', 'contact', 'num_members', 'notes')
-    search_fields = ('name', 'type', 'contact', 'num_members', 'notes')
+    search_fields = ('name', 'type', 'contact__first', 'contact__last', 'num_members', 'notes')
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -22,8 +22,8 @@ class ProjectAdmin(admin.ModelAdmin):
     list_filter = ('status','student_partner', 'faculty_partner', 'lafayette_organization', 'community_partner')
     fields = ('name', 'status', 'student_partner', 'faculty_partner', 'lafayette_organization', 'community_partner',
               'notes')
-    search_fields = ('name', 'status', 'student_partner', 'faculty_partner', 'lafayette_organization',
-                     'community_partner', 'notes')
+    search_fields = ('name', 'status', 'student_partner__first', 'student_partner__last', 'faculty_partner__first', 'faculty_partner__last', 'lafayette_organization__name',
+                     'community_partner__name', 'notes')
     actions = [mark_upcoming, mark_ongoing, mark_completed]
 
 
@@ -31,7 +31,7 @@ class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'coordinator', 'contact', 'organization', 'date', 'pulse_date', 'num_volunteers')
     list_filter = ('coordinator', 'organization', 'date', 'pulse_date')
     fields = ('name', 'coordinator', 'contact', 'organization', 'date', 'pulse_date', 'num_volunteers', 'notes')
-    search_fields = ('name', 'coordinator', 'contact', 'organization', 'date', 'pulse_date', 'num_volunteers', 'notes')
+    search_fields = ('name', 'coordinator__first', 'coordinator__last', 'contact__first', 'contact__last', 'organization__name', 'date', 'pulse_date', 'num_volunteers', 'notes')
     ordering = ('date',)
 
 
