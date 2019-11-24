@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django import forms
+from django.utils.html import linebreaks, format_html
 
 from .models import Person, Phone, Department, FacultyType
 
@@ -23,14 +24,26 @@ class PersonForm(forms.ModelForm):
         role = self.cleaned_data.get("role")
 
         if faculty_type and role != "Faculty":
-                raise forms.ValidationError("ERROR: The role must be a faculty for the person to have a faculty type")
+            raise forms.ValidationError("ERROR: The role must be a faculty for the person to have a faculty type")
 
 
 class PersonAdmin(admin.ModelAdmin):
-    list_display = ('first', 'last', 'email', 'role', 'department', 'faculty_type')
+    list_display = ('last', 'first', 'email', 'role', 'department', 'faculty_type', 'phone_numbers')
     search_fields = ('first', 'last', 'email', 'role', 'department', 'faculty_type')
     inlines = [PhoneInLine]
     form = PersonForm
+
+    def phone_numbers(self, obj):
+        number = ""
+
+        for phone in Phone.objects.filter(person=obj):
+            if phone != Phone.objects.filter(person=obj).last():
+                number += linebreaks(phone.number)
+            else:
+                number += "<p style=\"display:inline\">" + str(phone.number) + "</p>"
+
+        if number != "":
+            return format_html(number)
 
 
 class DepartmentAdmin(admin.ModelAdmin):

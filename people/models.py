@@ -1,4 +1,5 @@
 from django.db import models
+from phone_field import PhoneField
 
 
 # Create your models here.
@@ -31,7 +32,7 @@ class Person(models.Model):
 
 
 class Phone(models.Model):
-    number = models.IntegerField()
+    number = PhoneField(blank=True)
     person = models.ForeignKey(Person, on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
