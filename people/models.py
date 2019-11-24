@@ -21,9 +21,10 @@ class Person(models.Model):
     last = models.CharField(max_length=30)
     email = models.EmailField(null=True, blank=True)
     role = models.CharField(max_length=100, choices=(('Student', 'Student'), ('Faculty', 'Faculty'),
-                                                     ('Community Member', 'Community Member')), )
+                                                     ('Community Member', 'Community Member')))
     department = models.ForeignKey(Department, on_delete=models.SET_NULL, blank=True, null=True)
-    faculty_type = models.ForeignKey(FacultyType, on_delete=models.SET_NULL, blank=True, null=True)
+    faculty_type = models.ForeignKey(FacultyType, on_delete=models.SET_NULL, blank=True, null=True,
+                                     verbose_name='Faculty Type')
 
     def __str__(self):
         return self.first + " " + self.last

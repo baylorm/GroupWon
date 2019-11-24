@@ -22,13 +22,13 @@ class Project(models.Model):
                                                        ('Completed', 'Completed')))
     notes = models.TextField(blank=True, null=True)
     community_partner = models.ForeignKey(Organization, on_delete=models.SET_NULL, blank=True, null=True,
-                                          related_name='community')
+                                          related_name='community', verbose_name='Community Partner')
     lafayette_organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, blank=True, null=True,
-                                               related_name='lafayette')
+                                               related_name='lafayette', verbose_name='Lafayette Organization')
     student_partner = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True,
-                                        related_name='student')
+                                        related_name='student', verbose_name='Student Partner')
     faculty_partner = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True,
-                                        related_name='faculty')
+                                        related_name='faculty', verbose_name='Faculty Partner')
 
     def __str__(self):
         return self.name
@@ -37,8 +37,8 @@ class Project(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=150)
     date = models.DateTimeField(blank=True, null=True)
-    pulse_date = models.DateField(blank=True, null=True)
-    num_volunteers = models.IntegerField(blank=True, null=True)
+    pulse_date = models.DateField(blank=True, null=True, verbose_name='Pulse Date')
+    num_volunteers = models.IntegerField(blank=True, null=True, verbose_name='Number of Volunteers')
     notes = models.TextField(blank=True, null=True)
     coordinator = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True,
                                     related_name='coordinator')
