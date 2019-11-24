@@ -9,20 +9,67 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
+
         #header {
             background-color: #910029;
             color: white;
         }
+
+        h1{
+            background-color: #65001C;
+            color: white;
+            text-align: center;
+            font-weight: 500;
+        }
+
         .module h2, .module caption, .inLine-group h2 {
             color: white;
-            background-color: #910029;
+            background-color: #65001C;
+        }
+
+        div.breadcrumbs {
+            background-color: #65001C;
+        }
+
+        a:link {
+            color: #000;
+        }
+
+        a:visited {
+            color: #000;
+        }
+
+        .button, input[type=submit], input[type=button], .submit-row input, a.button {
+            background: #910029;
+            color: #fff;
+            border-radius: 14px;
+        }
+
+        .button:hover, input[type=submit]:hover, input[type=button]:hover, input[type=button]:hover, .submit-row input:hover, a.button:hover {
+            background: #65001C;
+            color: #fff;
+        }
+
+        .button.default, input[type=submit].default, .submit-row input.default {
+            background: #910029;
+            color: #fff;
+        }
+
+        .button.default:hover, input[type=submit].default:hover, .submit-row input.default:hover {
+            background: #65001C;
+            color: #fff;
         }
 
     </style>
 {% endblock %}
 
 {% block branding %}
-<h1 id="site-name"><span style="color:white">Landis Center Admin Panel</span></h1>
+
+
+    <h1 id="site-name"><span style="color:white">
+    <img src="//upload.wikimedia.org/wikipedia/en/thumb/3/31/Seal_of_Lafayette_College.png/180px-Seal_of_Lafayette_College.png"
+         alt="logo" class="logo" height="50" width="50">
+    Landis Center Admin Panel</span></h1>
 {% endblock %}
 
 {% block nav-global %}
