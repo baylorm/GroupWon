@@ -14,6 +14,7 @@ class OrganizationAdmin(admin.ModelAdmin):
     list_filter = ('type',)
     fields = ('name', 'type', 'contact', 'num_members', 'notes')
     search_fields = ('name', 'type', 'contact__first', 'contact__last', 'num_members', 'notes')
+    ordering = ('name',)
 
 
 class ProjectAdmin(admin.ModelAdmin):
@@ -25,6 +26,7 @@ class ProjectAdmin(admin.ModelAdmin):
     search_fields = ('name', 'status', 'student_partner__first', 'student_partner__last', 'faculty_partner__first', 'faculty_partner__last', 'lafayette_organization__name',
                      'community_partner__name', 'notes')
     actions = [mark_upcoming, mark_ongoing, mark_completed]
+    ordering = ('name',)
 
 
 class EventAdmin(admin.ModelAdmin):
