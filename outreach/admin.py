@@ -1,12 +1,18 @@
 from django.contrib import admin
 from .models import Project, Organization, Event
 
+
 def mark_upcoming(modeladmin, request, queryset):
     queryset.update(status='Upcoming')
+
+
 def mark_ongoing(modeladmin, request, queryset):
     queryset.update(status='Ongoing')
+
+
 def mark_completed(modeladmin, request, queryset):
     queryset.update(status='Completed')
+
 
 # Register your models here.
 class OrganizationAdmin(admin.ModelAdmin):
@@ -20,10 +26,11 @@ class OrganizationAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'status', 'student_partner', 'faculty_partner', 'lafayette_organization',
                     'community_partner', 'notes')
-    list_filter = ('status','student_partner', 'faculty_partner', 'lafayette_organization', 'community_partner')
+    list_filter = ('status',)
     fields = ('name', 'status', 'student_partner', 'faculty_partner', 'lafayette_organization', 'community_partner',
               'notes')
-    search_fields = ('name', 'status', 'student_partner__first', 'student_partner__last', 'faculty_partner__first', 'faculty_partner__last', 'lafayette_organization__name',
+    search_fields = ('name', 'status', 'student_partner__first', 'student_partner__last', 'faculty_partner__first',
+                     'faculty_partner__last', 'lafayette_organization__name',
                      'community_partner__name', 'notes')
     actions = [mark_upcoming, mark_ongoing, mark_completed]
     ordering = ('name',)
@@ -31,9 +38,11 @@ class ProjectAdmin(admin.ModelAdmin):
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'coordinator', 'contact', 'organization', 'date', 'pulse_date', 'num_volunteers')
-    list_filter = ('coordinator', 'organization', 'date', 'pulse_date')
+    list_filter = ('date', 'pulse_date')
     fields = ('name', 'coordinator', 'contact', 'organization', 'date', 'pulse_date', 'num_volunteers', 'notes')
-    search_fields = ('name', 'coordinator__first', 'coordinator__last', 'contact__first', 'contact__last', 'organization__name', 'date', 'pulse_date', 'num_volunteers', 'notes')
+    search_fields = (
+        'name', 'coordinator__first', 'coordinator__last', 'contact__first', 'contact__last', 'organization__name',
+        'date', 'pulse_date', 'num_volunteers', 'notes')
     ordering = ('date',)
 
 

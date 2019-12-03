@@ -8,8 +8,8 @@ from people.models import Person
 
 class Organization(models.Model):
     name = models.CharField(max_length=150)
-    type = models.CharField(max_length=150, choices=(
-    ('Community Organization', 'Community Organization'), ('Club', 'Club'), ('Course', 'Course')))
+    type = models.CharField(max_length=25, choices=(
+        ('Community Organization', 'Community Organization'), ('Club', 'Club'), ('Course', 'Course')))
     num_members = models.PositiveIntegerField(blank=True, null=True, verbose_name='Number of Members')
     notes = models.TextField(blank=True, null=True)
     contact = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True)
@@ -20,20 +20,20 @@ class Organization(models.Model):
 
 class Project(models.Model):
     name = models.CharField(max_length=150)
-    status = models.CharField(max_length=150, choices=(('Upcoming', 'Upcoming'), ('Ongoing', 'Ongoing'),
-                                                       ('Completed', 'Completed')))
+    status = models.CharField(max_length=10, choices=(('Upcoming', 'Upcoming'), ('Ongoing', 'Ongoing'),
+                                                      ('Completed', 'Completed')))
     notes = models.TextField(blank=True, null=True)
     community_partner = models.ForeignKey(Organization, on_delete=models.SET_NULL, blank=True, null=True,
-                                          related_name='community', verbose_name='Community Partner',
+                                          related_name='community',
                                           limit_choices_to={'type': 'Community Organization'})
     lafayette_organization = models.ForeignKey(Organization, on_delete=models.SET_NULL, blank=True, null=True,
-                                               related_name='lafayette', verbose_name='Lafayette Organization',
+                                               related_name='lafayette',
                                                limit_choices_to=Q(type='Club') | Q(type='Course'))
     student_partner = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True,
-                                        related_name='student', verbose_name='Student Partner',
+                                        related_name='student',
                                         limit_choices_to={'role': 'Student'})
     faculty_partner = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True,
-                                        related_name='faculty', verbose_name='Faculty Partner',
+                                        related_name='faculty',
                                         limit_choices_to={'role': 'Faculty'})
 
     def __str__(self):
@@ -43,7 +43,7 @@ class Project(models.Model):
 class Event(models.Model):
     name = models.CharField(max_length=150)
     date = models.DateTimeField(blank=True, null=True)
-    pulse_date = models.DateField(blank=True, null=True, verbose_name='Pulse Date')
+    pulse_date = models.DateField(blank=True, null=True)
     num_volunteers = models.PositiveIntegerField(blank=True, null=True, verbose_name='Number of Volunteers')
     notes = models.TextField(blank=True, null=True)
     coordinator = models.ForeignKey(Person, on_delete=models.SET_NULL, blank=True, null=True,
