@@ -4,6 +4,7 @@
 
 {% block extrastyle %}
     <style>
+
         body{
             font-family: "Trebuchet MS", Helvetica, sans-serif;
         }
@@ -38,10 +39,7 @@
         h1{
             background-color: #910029;
             width: fit-content;
-            padding-left: 10px;
-            padding-right: 10px;
-            padding-top: 3px;
-            padding-bottom: 3px;
+            padding: 3px 10px;
             color: white;
             font-weight: 500;
             border-bottom: 4px solid #65001C;
@@ -95,10 +93,23 @@
 {% endblock %}
 
 {% block branding %}
-    <h25 id="site-name"><span style="color:white">
-    <img src="//upload.wikimedia.org/wikipedia/en/thumb/3/31/Seal_of_Lafayette_College.png/180px-Seal_of_Lafayette_College.png"
-         alt="logo" class="logo" height="50" width="50" align="top">
+    <h25 id="site-name"><span style="color:white"><span style="background:white;border-radius: 60% 60% 10% 10%;">
+    <img src="http://landiscenter.lafayette.edu/files/2014/10/LandisPeople-300x300.png"
+         alt="logo" class="logo" height="50" width="50"
+         srcset="https://landiscenter.lafayette.edu/wp-content/uploads/sites/69/2014/10/LandisPeople-300x300.png 300w,
+            https://landiscenter.lafayette.edu/wp-content/uploads/sites/69/2014/10/LandisPeople-150x150.png 150w,
+            https://landiscenter.lafayette.edu/wp-content/uploads/sites/69/2014/10/LandisPeople-160x160.png 160w,
+            https://landiscenter.lafayette.edu/wp-content/uploads/sites/69/2014/10/LandisPeople-470x470.png 470w,
+            https://landiscenter.lafayette.edu/wp-content/uploads/sites/69/2014/10/LandisPeople.png 690w"
+         sizes="(max-width: 103px) 100vw, 103px" align="top" ></span>
     Landis Center Admin Panel</span></h25>
+{% endblock %}
+
+{% block content %}
+    <h1>Logged out</h1>
+    <p>Have a nice day!</p>
+    <p><a href="/admin/">Log in again</a></p>
+    <br class="clear">
 {% endblock %}
 
 {% block nav-global %}
