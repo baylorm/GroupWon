@@ -72,6 +72,7 @@ class EventForm(forms.ModelForm):
         widgets = {
             'coordinator': autocomplete.ModelSelect2(url='person-autocomplete'),
             'contact': autocomplete.ModelSelect2(url='person-autocomplete'),
+            'organization': autocomplete.ModelSelect2(url='organization-autocomplete'),
         }
 
 
