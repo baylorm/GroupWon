@@ -26,6 +26,7 @@ class OrganizationForm(forms.ModelForm):
             'contact': autocomplete.ModelSelect2(url='person-autocomplete'),
         }
 
+
 # Register your models here.
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'contact', 'num_members', 'notes')
@@ -51,7 +52,7 @@ class ProjectForm(forms.ModelForm):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('name', 'status', 'student_partner', 'faculty_partner', 'lafayette_organization',
                     'community_partner', 'notes')
-    list_filter = ('status', 'student_partner', 'faculty_partner', 'lafayette_organization', 'community_partner')
+    list_filter = ('status',)
     search_fields = ('name', 'status', 'student_partner__first', 'student_partner__last', 'faculty_partner__first',
                      'faculty_partner__last', 'lafayette_organization__name',
                      'community_partner__name', 'notes')
@@ -74,10 +75,11 @@ class EventForm(forms.ModelForm):
 
 class EventAdmin(admin.ModelAdmin):
     list_display = ('name', 'coordinator', 'contact', 'organization', 'date', 'pulse_date', 'num_volunteers')
-    list_filter = ('coordinator', 'organization', 'date', 'pulse_date')
+    list_filter = ('date', 'pulse_date')
     search_fields = (
-    'name', 'coordinator__first', 'coordinator__last', 'contact__first', 'contact__last', 'organization__name', 'date',
-    'pulse_date', 'num_volunteers', 'notes')
+        'name', 'coordinator__first', 'coordinator__last', 'contact__first', 'contact__last', 'organization__name',
+        'date',
+        'pulse_date', 'num_volunteers', 'notes')
     ordering = ('date',)
     form = EventForm
 
