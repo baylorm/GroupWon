@@ -27,10 +27,12 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-
 # Application definition
 
 INSTALLED_APPS = [
+    'dal',
+    'dal_select2',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -89,6 +91,10 @@ else:
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
             'NAME': 'baylorm',
+            'USER': 'baylorm',
+            'PASSWORD': 'EnRajip8',
+            'HOST': 'localhost',
+            'PORT': '5432',
         }
     }
 

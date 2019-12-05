@@ -13,11 +13,32 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, reverse_lazy
+from django.urls import path, reverse_lazy, include
 from django.views.generic import RedirectView
+
+from GroupWon.views import PersonAutoComplete, StudentAutoComplete, FacultyAutoComplete
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
     path('', RedirectView.as_view(url=reverse_lazy('admin:index'))),
+
+    url(
+        r'^person-autocomplete/$',
+        PersonAutoComplete.as_view(),
+        name='person-autocomplete',
+    ),
+
+    url(
+        r'^student-autocomplete/$',
+        StudentAutoComplete.as_view(),
+        name='student-autocomplete',
+    ),
+
+    url(
+        r'^faculty-autocomplete/$',
+        FacultyAutoComplete.as_view(),
+        name='faculty-autocomplete',
+    ),
 ]
