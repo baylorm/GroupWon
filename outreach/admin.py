@@ -30,6 +30,7 @@ class OrganizationForm(forms.ModelForm):
 class OrganizationAdmin(admin.ModelAdmin):
     list_display = ('name', 'type', 'contact', 'num_members', 'notes')
     list_filter = ('type',)
+    fields = ('name', 'type', 'contact', 'num_members', 'notes')
     search_fields = ('name', 'type', 'contact__first', 'contact__last', 'num_members', 'notes')
     ordering = ('name',)
     form = OrganizationForm
