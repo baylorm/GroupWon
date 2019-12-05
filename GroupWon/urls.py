@@ -18,7 +18,8 @@ from django.contrib import admin
 from django.urls import path, reverse_lazy, include
 from django.views.generic import RedirectView
 
-from GroupWon.views import PersonAutoComplete, StudentAutoComplete, FacultyAutoComplete
+from GroupWon.views import PersonAutoComplete, StudentAutoComplete, FacultyAutoComplete, LafayetteAutoComplete, \
+    CommunityAutoComplete
 
 urlpatterns = [
     path('admin/', admin.site.urls, name="admin"),
@@ -40,5 +41,17 @@ urlpatterns = [
         r'^faculty-autocomplete/$',
         FacultyAutoComplete.as_view(),
         name='faculty-autocomplete',
+    ),
+
+    url(
+        r'^lafayette-autocomplete/$',
+        LafayetteAutoComplete.as_view(),
+        name='lafayette-autocomplete',
+    ),
+
+    url(
+        r'^community-autocomplete/$',
+        CommunityAutoComplete.as_view(),
+        name='community-autocomplete',
     ),
 ]

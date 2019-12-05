@@ -45,7 +45,9 @@ class ProjectForm(forms.ModelForm):
                   'notes')
         widgets = {
             'student_partner': autocomplete.ModelSelect2(url='student-autocomplete'),
-            'faculty_partner': autocomplete.ModelSelect2(url='faculty-autocomplete')
+            'faculty_partner': autocomplete.ModelSelect2(url='faculty-autocomplete'),
+            'lafayette_organization': autocomplete.ModelSelect2(url='lafayette-autocomplete'),
+            'community_partner': autocomplete.ModelSelect2(url='community-autocomplete')
         }
 
 
